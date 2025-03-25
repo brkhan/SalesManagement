@@ -1,0 +1,20 @@
+# Ignore Debug and Release folders
+**/bin/Debug/
+**/bin/Release/
+**/obj/Debug/
+**/obj/
+
+# Ignore other common files and folders
+*.log
+*.tmp
+*.bak
+*.swp
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vs
+*.vsidx
+*.cache
+
+
