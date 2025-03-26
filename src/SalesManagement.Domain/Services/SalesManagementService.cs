@@ -97,21 +97,21 @@ namespace SalesManagement.Domain.Services
                     }
             };
         }
-
-        private Encoding DetectFileEncoding(string filePath)
-        {
-            try
-            {
-                using var fileStream = File.OpenRead(filePath);
-                var detector = new CharsetDetector();
-                detector.Feed(fileStream);
-                detector.DataEnd();
-                return Encoding.GetEncoding(detector.Charset ?? "windows-1252");
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        //
+        // private Encoding DetectFileEncoding(string filePath)
+        // {
+        //     try
+        //     {
+        //         using var fileStream = File.OpenRead(filePath);
+        //         var detector = new CharsetDetector();
+        //         detector.Feed(fileStream);
+        //         detector.DataEnd();
+        //         return Encoding.GetEncoding(detector.Charset ?? "windows-1252");
+        //     }
+        //     catch (Exception ex)
+        //     {
+        //         throw ex;
+        //     }
+        // }
     }
 }

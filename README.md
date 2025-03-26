@@ -1,11 +1,11 @@
 Sales management
 
 # Instructions to start application
-1. Clone the repository
-2. Chose develop branch
-3. Start the application. This should start two applications, SalesManagement.UI and SalesManagement.API
+1. Clone the repository(git clone https://github.com/brkhan/SalesManagement.git)
+2. Chose develop branch (git checkout develop)
+3. Start the application by chosing SalesManagement.API and/or SalesManagement.UI.
 4. SalesManagement.UI is a Blazor application, has user interface for chosing summary or all records from csv.
-5. SalesManagement.API has endpoints for getting summary and all records from csv. Its a REST api.
+5. SalesManagement.API has endpoints for getting summary and all records from csv. It is a REST api.
 
 ## Observations
 1. Record(699) has no manfacturing price. This is ignored.  Up for discussion.
