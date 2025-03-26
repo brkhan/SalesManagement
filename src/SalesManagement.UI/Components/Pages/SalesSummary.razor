@@ -1,0 +1,71 @@
+﻿@page "/salessummary"
+@using SalesManagement.Domain.Services
+@using SalesManagement.Domain.Services.Models
+@using SalesManagement.UI.Services
+@inject ISalesViewService SalesViewService
+@rendermode InteractiveServer
+
+<h3>Total Sales Summary</h3>
+
+<div class="summary-selection">
+	<label for="summaryType">Select sales summary by type:</label>
+	<select id="summaryType" @onchange="OnSummaryTypeChanged">
+		<option value="total">Total</option>
+		<option value="country">Country</option>
+		<option value="product">Product</option>
+		<option value="segment">Segment</option>
+	</select>
+</div>
+
+<br/>
+<p>Selected summary type: @_selectedSummaryType</p>
+
+@if (!_salesRecords.Any())
+{
+	<p>No sales records found.</p>
+}
+else
+{
+	<table class="table">
+		<thead>
+		<tr>
+			<th>Summary Item</th>
+			<th>Total Units Sold</th>
+			<th>Total Manufacturing Price(£)</th>
+			<th>Total Sales Price(£)</th>
+		</tr>
+		</thead>
+		<tbody>
+		@foreach (var record in _salesRecords)
+		{
+			<tr>
+				<td>@record.SummaryKey</td>
+				<td>@record.UnitsSold</td>
+				<td>@record.ManufacturingPriceConverted</td>
+				<td>@record.SalesPriceConverted</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+}
+
+@code {
+	private IList<SalesSummaryItem>? _salesRecords = [];
+	private string? _selectedSummaryType = "total";
+
+	protected override async Task OnInitializedAsync()
+	{
+		await LoadSummaryData();
+	}
+
+	public async Task OnSummaryTypeChanged(ChangeEventArgs e)
+	{
+		_selectedSummaryType = e.Value?.ToString();
+		await LoadSummaryData();
+	}
+
+	private async Task LoadSummaryData()
+	{
+		_salesRecords = await SalesViewService.GetTotalSalesSummary(_selectedSummaryType);
+	}
+}

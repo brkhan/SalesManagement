@@ -1,0 +1,57 @@
+﻿@page "/totalsales"
+@using SalesManagement.Domain.Services
+@using SalesManagement.Domain.Services.Models
+@using SalesManagement.UI.Services
+@inject ISalesViewService SalesViewService
+
+<h3>Total Sales</h3>
+
+@if (_salesRecords == null)
+{
+	<p><em>Loading...</em></p>
+}
+else if (!_salesRecords.Any())
+{
+	<p>No sales records found.</p>
+}
+else
+{
+	<table class="table">
+		<thead>
+		<tr>
+			<th>Segment</th>
+			<th>Country</th>
+			<th>Product</th>
+			<th>Discount Band</th>
+			<th>Units Sold</th>
+			<th>Manufacturing Price(£)</th>
+			<th>Sale Price(£)</th>
+			<th>Date</th>
+		</tr>
+		</thead>
+		<tbody>
+		@foreach (var record in _salesRecords)
+		{
+			<tr>
+				<td>@record.Segment</td>
+				<td>@record.Country</td>
+				<td>@record.Product</td>
+				<td>@record.DiscountBand</td>
+				<td>@record.UnitsSold</td>
+				<td>@record.ManufacturingPrice</td>
+				<td>@record.SalesPrice</td>
+				<td>@record.Date.ToString("d")</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+}
+
+@code {
+	private IList<SalesItem>? _salesRecords;
+
+	protected override async Task OnInitializedAsync()
+	{
+		_salesRecords = await SalesViewService.GetTotalSalesAsync();
+	}
+}

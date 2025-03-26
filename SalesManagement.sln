@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35828.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesManagement.Api", "src\SalesManagement.Api\SalesManagement.Api.csproj", "{59ABC131-71AA-C8DD-C660-520BDA2B9DAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesManagement.Api.UnitTests", "tests\SalesManagment.Api.UnitTests\SalesManagement.Api.UnitTests.csproj", "{18708D2C-E17F-0358-5DAA-F2EFED32A10B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3E98A408-2C97-42D7-B9BC-7A8E31381E3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesManagement.Domain", "src\SalesManagement.Domain\SalesManagement.Domain.csproj", "{CD898AAB-F490-ED5C-549B-2045510E14BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesManagement.UI", "src\SalesManagement.UI\SalesManagement.UI.csproj", "{0A1A4993-523A-50F2-8415-7576FBF92BB8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59ABC131-71AA-C8DD-C660-520BDA2B9DAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59ABC131-71AA-C8DD-C660-520BDA2B9DAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59ABC131-71AA-C8DD-C660-520BDA2B9DAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59ABC131-71AA-C8DD-C660-520BDA2B9DAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18708D2C-E17F-0358-5DAA-F2EFED32A10B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18708D2C-E17F-0358-5DAA-F2EFED32A10B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18708D2C-E17F-0358-5DAA-F2EFED32A10B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18708D2C-E17F-0358-5DAA-F2EFED32A10B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD898AAB-F490-ED5C-549B-2045510E14BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD898AAB-F490-ED5C-549B-2045510E14BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD898AAB-F490-ED5C-549B-2045510E14BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD898AAB-F490-ED5C-549B-2045510E14BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A1A4993-523A-50F2-8415-7576FBF92BB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A1A4993-523A-50F2-8415-7576FBF92BB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A1A4993-523A-50F2-8415-7576FBF92BB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A1A4993-523A-50F2-8415-7576FBF92BB8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{59ABC131-71AA-C8DD-C660-520BDA2B9DAE} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{18708D2C-E17F-0358-5DAA-F2EFED32A10B} = {3E98A408-2C97-42D7-B9BC-7A8E31381E3F}
+		{CD898AAB-F490-ED5C-549B-2045510E14BD} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{0A1A4993-523A-50F2-8415-7576FBF92BB8} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {99B300F6-2C13-4078-9FB9-5F05ED27ED1D}
+	EndGlobalSection
+EndGlobal
