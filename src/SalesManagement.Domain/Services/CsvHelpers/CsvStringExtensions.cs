@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace SalesManagement.Api.Services.CsvHelpers;
+namespace SalesManagement.Domain.Services.CsvHelpers;
 
 public static class CsvStringExtensions
 {
@@ -12,7 +12,7 @@ public static class CsvStringExtensions
     public static double ParseCurrency(this string input)
     {
         // Remove the currency symbol and any extra spaces
-        var cleanedInput = input.Replace("£", "").Replace("�", "").TrimCsv();
+        var cleanedInput = input.Replace("£", "").TrimCsv();
         // Parse the cleaned string to a double
         return double.Parse(cleanedInput, CultureInfo.InvariantCulture);
     }

@@ -1,10 +1,10 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Moq;
-using SalesManagement.Api.Services;
 using System.Net.Http.Json;
 using Microsoft.AspNetCore.Mvc.Testing;
 using SalesManagement.Domain.Services;
+using SalesManagement.Domain.Services.Models;
 
 namespace SalesManagement.Api.UnitTests;
 
@@ -34,10 +34,10 @@ public class SalesManagementControllerTests : IClassFixture<WebApplicationFactor
     public async Task Get_ShouldReturnTotalSales()
     {
         // Arrange
-        var expectedSales = new List<SalesRecord>
+        var expectedSales = new List<SalesItem>
         {
-            new SalesRecord { Country = "USA", Product = "Product1", UnitsSold = 100 },
-            new SalesRecord { Country = "Canada", Product = "Product2", UnitsSold = 200 }
+            new SalesItem { Country = "USA", Product = "Product1", UnitsSold = 100 },
+            new SalesItem { Country = "Canada", Product = "Product2", UnitsSold = 200 }
         };
         _salesManagementServiceMock.Setup(service => service.GetTotalSales()).Returns(expectedSales);
 
@@ -45,7 +45,7 @@ public class SalesManagementControllerTests : IClassFixture<WebApplicationFactor
         var response = await _client.GetAsync("/SalesManagement");
         response.EnsureSuccessStatusCode();
 
-        var sales = await response.Content.ReadFromJsonAsync<List<SalesRecord>>();
+        var sales = await response.Content.ReadFromJsonAsync<List<SalesItem>>();
 
         // Assert
         Assert.NotNull(sales);
@@ -57,10 +57,10 @@ public class SalesManagementControllerTests : IClassFixture<WebApplicationFactor
     {
         // Arrange
         var summaryType = "country";
-        var expectedSummary = new List<SalesSummaryRecord>
+        var expectedSummary = new List<SalesSummaryItem>
         {
-            new SalesSummaryRecord { SummaryKey = "USA", UnitsSold = 1000, ManufacturingPriceConverted = 5000 },
-            new SalesSummaryRecord { SummaryKey = "Canada", UnitsSold = 2000, ManufacturingPriceConverted = 10000 }
+            new SalesSummaryItem { SummaryKey = "USA", UnitsSold = 1000, ManufacturingPriceConverted = 5000 },
+            new SalesSummaryItem { SummaryKey = "Canada", UnitsSold = 2000, ManufacturingPriceConverted = 10000 }
         };
         _salesManagementServiceMock.Setup(service => service.GetSummary(summaryType)).Returns(expectedSummary);
 
@@ -68,7 +68,7 @@ public class SalesManagementControllerTests : IClassFixture<WebApplicationFactor
         var response = await _client.GetAsync($"/SalesManagement/summary/{summaryType}");
         response.EnsureSuccessStatusCode();
 
-        var summary = await response.Content.ReadFromJsonAsync<List<SalesSummaryRecord>>();
+        var summary = await response.Content.ReadFromJsonAsync<List<SalesSummaryItem>>();
 
         // Assert
         Assert.NotNull(summary);

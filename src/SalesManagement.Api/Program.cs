@@ -1,5 +1,5 @@
 using System.Text;
-using SalesManagement.Api.Services;
+using SalesManagement.Domain.Services;
 
 namespace SalesManagement.Api
 {
@@ -8,6 +8,9 @@ namespace SalesManagement.Api
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            //Registering the CodePagesEncodingProvider ensures that the application can handle various CSV file encodings correctly.
+            //The given file uses the encoding Windows-1252.
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
             // Add services to the container.

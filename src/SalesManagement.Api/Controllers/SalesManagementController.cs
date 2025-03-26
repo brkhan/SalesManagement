@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using SalesManagement.Api.Services;
 using SalesManagement.Domain.Services;
+using SalesManagement.Domain.Services.Models;
 
 
 namespace SalesManagement.Api.Controllers;
@@ -12,17 +12,15 @@ public class SalesManagementController(
     ISalesManagementService salesManagementService)
     : ControllerBase
 {
-    private readonly ILogger<SalesManagementController> _logger = logger;
-
     [HttpGet(Name = "GetTotalSales")]
-    public IEnumerable<SalesRecord> Get()
+    public ActionResult<IEnumerable<SalesItem>> Get()
     {
-        return salesManagementService.GetTotalSales();
+        return new OkObjectResult(salesManagementService.GetTotalSales());
     }
 
     [HttpGet("summary/{type}", Name = "GetByTypeSummary")]
-    public IEnumerable<SalesSummaryRecord> GetSummary(string type)
+    public ActionResult<IEnumerable<SalesSummaryItem>> GetSummary(string type)
     {
-        return salesManagementService.GetSummary(type);
+        return new OkObjectResult(salesManagementService.GetSummary(type));
     }
 }

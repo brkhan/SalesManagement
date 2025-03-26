@@ -1,7 +1,8 @@
 ﻿@page "/totalsales"
 @using SalesManagement.Domain.Services
+@using SalesManagement.Domain.Services.Models
 @using SalesManagement.UI.Services
-@inject SalesService SalesService
+@inject ISalesViewService SalesViewService
 
 <h3>Total Sales</h3>
 
@@ -23,8 +24,8 @@ else
 			<th>Product</th>
 			<th>Discount Band</th>
 			<th>Units Sold</th>
-			<th>Manufacturing Price</th>
-			<th>Sale Price</th>
+			<th>Manufacturing Price(£)</th>
+			<th>Sale Price(£)</th>
 			<th>Date</th>
 		</tr>
 		</thead>
@@ -38,7 +39,7 @@ else
 				<td>@record.DiscountBand</td>
 				<td>@record.UnitsSold</td>
 				<td>@record.ManufacturingPrice</td>
-				<td>@record.SalePrice</td>
+				<td>@record.SalesPrice</td>
 				<td>@record.Date.ToString("d")</td>
 			</tr>
 		}
@@ -47,10 +48,10 @@ else
 }
 
 @code {
-	private List<SalesRecord>? _salesRecords;
+	private IList<SalesItem>? _salesRecords;
 
 	protected override async Task OnInitializedAsync()
 	{
-		_salesRecords = await SalesService.GetTotalSalesAsync();
+		_salesRecords = await SalesViewService.GetTotalSalesAsync();
 	}
 }

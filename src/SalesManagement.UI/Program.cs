@@ -1,5 +1,8 @@
+using System.Text;
+using SalesManagement.Domain.Services;
 using SalesManagement.UI.Components;
 using SalesManagement.UI.Services;
+
 
 namespace SalesManagement.UI;
 
@@ -9,15 +12,21 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        //Registering the CodePagesEncodingProvider ensures that the application can handle various CSV file encodings correctly.
+        //The given file uses the encoding Windows-1252.
+        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
         // Add services to the container.
         builder.Services.AddRazorComponents()
             .AddInteractiveServerComponents();
 
+        builder.Services.AddTransient<ISalesManagementService, SalesManagementService>();
+        builder.Services.AddTransient<ISalesViewService, SalesViewService>();
         // Register HttpClient
-        builder.Services.AddHttpClient<SalesService>(client =>
-        {
-            client.BaseAddress = new Uri("http://localhost:5165");
-        });
+        // builder.Services.AddHttpClient<SalesViewService>(client =>
+        // {
+        //     client.BaseAddress = new Uri("http://localhost:5165");
+        // });
 
         var app = builder.Build();
 
